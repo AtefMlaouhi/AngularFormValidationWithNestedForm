@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Formulaire Angular avec nasted component, reactive forms in Angular</h2>
+  <p>
+    Encapsulation d'un composant dans un formulaire
+  </p>
+  <br />
+  <form #f="ngForm" [formGroup]="myForm" novalidate (ngSubmit)="submit(f)">
+    <div>
+      <label>
+        Email:
+        <input formControlName="email" type="text" />
+      </label>
+      <span
+        class="error"
+        *ngIf="
+          (f.submitted || myForm.get('email').touched) &&
+          myForm.get('email').hasError('required')
+        "
+      >
+        Email is required
+      </span>
+    </div>
+    <br />
+    <div>
+      <am-nested-form
+        [formSubmitted]="f.submitted"
+        [setFname]="fnameCheck"
+        [setLname]="lnameCheck"
+        formControlName="info"
+      ></am-nested-form>
+    </div>
+    <br />
+    <div>
+      <button [disabled]="!f.valid" type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div class="status">
+    <div>
+      Valeur de mon model
+      <div>
+        <pre><code>{{ myForm?.value | json }}</code></pre>
+      </div>
+    </div>
+    <div>validation form: {{ myForm?.valid }}</div>
+    <div>validation nested form : {{ myForm.get('info')?.valid }}</div>
+  </div>
+</div>

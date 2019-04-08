@@ -1,0 +1,32 @@
+<div [formGroup]="privateToCmpGroup">
+  <div *ngIf="setFname">
+    <label>
+      First name:
+      <input formControlName="fname" type="text" />
+    </label>
+    <span
+      class="error"
+      *ngIf="
+        (formSubmitted || privateToCmpGroup.get('fname').touched) &&
+        privateToCmpGroup.get('fname').hasError('required')
+      "
+    >
+      First name is required
+    </span>
+  </div>
+  <div *ngIf="setLname">
+    <label>
+      Last name:
+      <input formControlName="lname" type="text" />
+    </label>
+    <span
+      class="error"
+      *ngIf="
+        (formSubmitted || privateToCmpGroup.get('lname').touched) &&
+        privateToCmpGroup.get('lname').hasError('required')
+      "
+    >
+      Last name is required
+    </span>
+  </div>
+</div>
