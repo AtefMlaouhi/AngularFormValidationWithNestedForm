@@ -35,9 +35,6 @@ export class NestedFormComponent
   constructor() {}
 
   ngOnInit() {
-    console.log(this.setFname);
-    console.log(this.formSubmitted);
-
     this.privateToCmpGroup = new FormGroup({
       fname: new FormControl('', Validators.required),
       lname: new FormControl('', Validators.required)
