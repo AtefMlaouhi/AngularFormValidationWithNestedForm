@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/AtefMlaouhi/AngularFormValidationWithNestedForm.svg?branch=master)](https://travis-ci.org/AtefMlaouhi/AngularFormValidationWithNestedForm)
 [![Maintainability](https://api.codeclimate.com/v1/badges/68eedb88e70884bdfb02/maintainability)](https://codeclimate.com/github/AtefMlaouhi/AngularFormValidationWithNestedForm/maintainability)
-[![BCH compliance](https://bettercodehub.com/edge/badge/AngularFormValidationWithNestedForm/Fizz-Buzz?branch=master)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/AtefMlaouhi/AngularFormValidationWithNestedForm?branch=master)](https://bettercodehub.com/)
 
 # AngularFormValidationWithNestedForm
 
