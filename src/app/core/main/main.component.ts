@@ -22,8 +22,7 @@ export class MainComponent implements OnInit {
         {
           fname: '',
           lname: ''
-        },
-        Validators.required
+        }
       ]
     });
   }

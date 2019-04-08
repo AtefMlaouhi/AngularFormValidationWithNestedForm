@@ -24,31 +24,34 @@ import {
     { provide: NG_VALIDATORS, useExisting: NestedFormComponent, multi: true }
   ]
 })
-export class NestedFormComponent
-  implements OnInit, ControlValueAccessor, Validator {
+export class NestedFormComponent implements ControlValueAccessor, Validator {
   privateToCmpGroup: FormGroup;
+  fname: FormControl;
+  lname: FormControl;
+  fnameValidation = true;
+  lnameValidation = true;
 
   @Input() public formSubmitted: boolean;
-  @Input() setFname = true;
-  @Input() setLname = true;
+  @Input('setFname')
+  set setFname(value: boolean) {
+    this.fnameValidation = value;
+    this.manageValidation('fname', value);
+  }
+  @Input('setLname')
+  set setLname(value: boolean) {
+    this.lnameValidation = value;
+    this.manageValidation('lname', value);
+  }
 
-  constructor() {}
-
-  ngOnInit() {
-    this.privateToCmpGroup = new FormGroup({
-      fname: new FormControl('', Validators.required),
-      lname: new FormControl('', Validators.required)
-    });
-    this.privateToCmpGroup.valueChanges.subscribe(val =>
-      this.propagateChange(val)
-    );
+  constructor() {
+    this.setValidator();
   }
 
   validate(c: AbstractControl): ValidationErrors {
-    if (this.privateToCmpGroup.get('fname').errors && this.setFname) {
+    if (this.privateToCmpGroup.get('fname').errors && this.fnameValidation) {
       return this.privateToCmpGroup.get('fname').errors;
     }
-    if (this.privateToCmpGroup.get('lname').errors && this.setLname) {
+    if (this.privateToCmpGroup.get('lname').errors && this.lnameValidation) {
       return this.privateToCmpGroup.get('lname').errors;
     }
     return null;
@@ -61,7 +64,7 @@ export class NestedFormComponent
     if (value) {
       this.privateToCmpGroup.setValue(value, { emitEvent: false });
     } else {
-      this.ngOnInit();
+      this.setValidator();
     }
   }
   registerOnChange(fn: any) {
@@ -69,5 +72,24 @@ export class NestedFormComponent
   }
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  private setValidator() {
+    this.privateToCmpGroup = new FormGroup({
+      fname: new FormControl('', Validators.required),
+      lname: new FormControl('', Validators.required)
+    });
+    this.privateToCmpGroup.valueChanges.subscribe(val =>
+      this.propagateChange(val)
+    );
+  }
+
+  private manageValidation(key: string, state: boolean) {
+    if (this.fnameValidation) {
+      this.privateToCmpGroup.get(key).setValidators(Validators.required); // .reset();
+    } else {
+      this.privateToCmpGroup.get(key).clearValidators();
+    }
+    this.privateToCmpGroup.get(key).updateValueAndValidity();
   }
 }
