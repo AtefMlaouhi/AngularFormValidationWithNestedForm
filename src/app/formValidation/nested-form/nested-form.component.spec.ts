@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NestedFormComponent } from './nested-form.component';
-import { CoreModule } from '../core.module';
+import { FormValidationModule } from '../form-validation.module';
 
 describe('NestedFormComponent', () => {
   let component: NestedFormComponent;
@@ -9,7 +9,7 @@ describe('NestedFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule]
+      imports: [FormValidationModule]
     }).compileComponents();
   }));
 

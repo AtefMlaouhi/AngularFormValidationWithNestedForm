@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AmMaterialModule } from './shared';
+import { FormValidationModule } from './formValidation/form-validation.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { AmMaterialModule } from './shared';
     ReactiveFormsModule,
     AppRoutingModule,
     CoreModule,
+    FormValidationModule,
     AmMaterialModule
   ],
   providers: [],

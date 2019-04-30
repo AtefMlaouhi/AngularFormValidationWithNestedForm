@@ -1,0 +1,15 @@
+<form [formGroup]="privateToCmpGroup">
+  <mat-form-field *ngIf="fnameValidation">
+    <input matInput formControlName="fname" placeholder="First name" />
+    <mat-error *ngIf="fname.touched && fname.hasError('required')">
+      First name <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="lnameValidation">
+    <input matInput formControlName="lname" placeholder="Last name" />
+    <mat-error *ngIf="lname.touched && lname.hasError('required')">
+      Last name <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>

@@ -1,44 +1,19 @@
-<div class="container">
-  <h2>Formulaire Angular avec nested component, reactive forms in Angular</h2>
-  <p>
-    Encapsulation d'un composant dans un formulaire
-  </p>
-  <input type="checkbox" checked="fnameCheck" (change)="fnameCheck = !fnameCheck" />Set First name <br />
-  <input type="checkbox" checked="lnameCheck" (change)="lnameCheck = !lnameCheck" />Set Last name <br />
-
-  <br />
-  <form #f="ngForm" [formGroup]="myForm" novalidate (ngSubmit)="submit(f)">
-    <div>
-      <label>
-        Email:
-        <input formControlName="email" type="text" />
-      </label>
-      <span class="error" *ngIf="
-          (f.submitted || myForm.get('email').touched) &&
-          myForm.get('email').hasError('required')
-        ">
-        Email is required
-      </span>
-    </div>
-    <br />
-    <div>
-      <am-nested-form [formSubmitted]="f.submitted" [setFname]="fnameCheck" [setLname]="lnameCheck"
-        formControlName="info"></am-nested-form>
-    </div>
-    <br />
-    <div>
-      <button [disabled]="!f.valid" type="submit">Submit</button>
-    </div>
-  </form>
-
-  <div class="status">
-    <div>
-      Valeur de mon model
-      <div>
-        <pre><code>{{ myForm?.value | json }}</code></pre>
+<div fxLayout="column" fxFlexFill>
+  <div fxFlex="25" fxFlex.md="15" fxFlex.xs="5"></div>
+  <div fxFlex="50" fxFlex.md="70" fxFlex.xs="90">
+    <div fxLayout="row" fxFlexFill>
+      <div fxFlex="25" fxFlex.xs="15"></div>
+      <div
+        fxFlex="50"
+        fxFlex.md="50"
+        fxFlex.xs="70"
+        fxFlexFill
+        fxLayoutAlign="center center"
+      >
+        <am-home-validation></am-home-validation>
       </div>
+      <div fxFlex="25" fxFlex.xs="15"></div>
     </div>
-    <div>validation form: {{ myForm?.valid }}</div>
-    <div>validation nested form : {{ myForm.get('info')?.valid }}</div>
+    <div fxFlex="25" fxFlex.md="15" fxFlex.xs="5"></div>
   </div>
 </div>

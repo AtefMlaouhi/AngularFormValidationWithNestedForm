@@ -1,0 +1,19 @@
+<form [formGroup]="privateToCmpGroup">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="email"
+      placeholder="Mail"
+      amEmailValidator
+    />
+    <mat-error *ngIf="email.touched && email.hasError('required')">
+      Mail name <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="email.touched && email.hasError('invalidMail')">
+      Please type a correct email address
+    </mat-error>
+    <mat-error *ngIf="email.touched && email.hasError('mailNotExist')">
+      Mail not exist
+    </mat-error>
+  </mat-form-field>
+</form>

@@ -4,16 +4,19 @@ import { MainComponent } from './main/main.component';
 import { CoreRoutingModule } from './core.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NestedFormComponent } from './nested-form/nested-form.component';
+import { AmMaterialModule } from '../shared';
+import { FormValidationModule } from '../formValidation/form-validation.module';
 
 @NgModule({
-  declarations: [MainComponent, NestedFormComponent],
+  declarations: [MainComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     CommonModule,
-    CoreRoutingModule
+    AmMaterialModule,
+    CoreRoutingModule,
+    FormValidationModule
   ],
-  exports: [MainComponent, NestedFormComponent]
+  exports: [MainComponent]
 })
 export class CoreModule {}

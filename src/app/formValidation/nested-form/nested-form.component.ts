@@ -26,8 +26,8 @@ import {
 })
 export class NestedFormComponent implements ControlValueAccessor, Validator {
   privateToCmpGroup: FormGroup;
-  fname: FormControl;
-  lname: FormControl;
+  fname: FormControl = new FormControl('', Validators.required);
+  lname: FormControl = new FormControl('', Validators.required);
   fnameValidation = true;
   lnameValidation = true;
 
@@ -76,8 +76,8 @@ export class NestedFormComponent implements ControlValueAccessor, Validator {
 
   private setValidator() {
     this.privateToCmpGroup = new FormGroup({
-      fname: new FormControl('', Validators.required),
-      lname: new FormControl('', Validators.required)
+      fname: this.fname,
+      lname: this.lname
     });
     this.privateToCmpGroup.valueChanges.subscribe(val =>
       this.propagateChange(val)
