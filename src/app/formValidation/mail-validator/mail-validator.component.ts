@@ -10,8 +10,6 @@ import {
   ValidationErrors,
   NG_VALIDATORS
 } from '@angular/forms';
-import { UserMailService } from '../services/user-mail.service';
-import { filter } from 'rxjs/operators';
 
 const emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -37,9 +35,7 @@ export class MailValidatorComponent implements ControlValueAccessor, Validator {
   email: FormControl = new FormControl('', [Validators.required]);
 
   @Input() public formSubmitted: boolean;
-
-  test = false;
-  constructor(private userMail: UserMailService) {}
+  constructor() {}
 
   validate(control: AbstractControl): ValidationErrors {
     return this.email.errors;

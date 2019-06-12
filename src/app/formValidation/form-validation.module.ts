@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NestedFormComponent } from './nested-form/nested-form.component';
 import { MailValidatorComponent } from './mail-validator/mail-validator.component';
-import { UserMailService } from './services/user-mail.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 
@@ -23,7 +22,6 @@ import { SharedModule } from '../shared/shared.module';
     HttpClientModule,
     SharedModule
   ],
-  exports: [HomeValidationComponent, NestedFormComponent],
-  providers: [UserMailService]
+  exports: [HomeValidationComponent, NestedFormComponent]
 })
 export class FormValidationModule {}

@@ -1,1 +1,1 @@
-export * from './cga-material/cga-material.module';
+export * from './material/material.module';
